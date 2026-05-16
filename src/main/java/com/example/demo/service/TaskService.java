@@ -21,16 +21,16 @@ public class TaskService {
     }
 
     public Task crearTarea(Task task) {
-        //TaskEntity entity = taskAdapter.toEntity(task); //F3
-        //TaskEntity savedEntity = taskRepository.save(entity); //F3
-        //return taskAdapter.toModel(savedEntity); //F3
-        Task task_resp = new Task();
-        //task_resp.setTitulo(task.getTitulo()); //F2
-        return task_resp;
+        TaskEntity entity = taskAdapter.toEntity(task); //F3
+        TaskEntity savedEntity = taskRepository.save(entity); //F3
+        return taskAdapter.toModel(savedEntity); //F3
+//        Task task_resp = new Task();
+//        task_resp.setTitulo(task.getTitulo()); //F2
+//        return task_resp;
     }
 
     public List<Task> listarTareas() {
-        List<TaskEntity> entities = taskRepository.findAll();
+        List<TaskEntity> entities = taskRepository. findAll();
 
         // Convierte cada Entity a Model usando el adapter
         return entities.stream()
