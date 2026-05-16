@@ -30,10 +30,7 @@ class DocumentoControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    // ==========================================================
     // CREATE
-    // ==========================================================
-
     @Test
     @DisplayName("🟢 CREATE: Debería crear documento")
     void deberiaCrearDocumento() throws Exception {
@@ -55,10 +52,7 @@ class DocumentoControllerTest {
                         .value("Formato único de Trámite"));
     }
 
-    // ==========================================================
     // READ
-    // ==========================================================
-
     @Test
     @DisplayName("🔵 READ: Debería listar documentos")
     void deberiaListarDocumentos() throws Exception {
@@ -70,10 +64,7 @@ class DocumentoControllerTest {
                 .andExpect(jsonPath("$.length()").value(5));
     }
 
-    // ==========================================================
     // UPDATE
-    // ==========================================================
-
     @Test
     @DisplayName("🟡 UPDATE: Debería actualizar documento")
     void deberiaActualizarDocumento() throws Exception {
@@ -95,10 +86,7 @@ class DocumentoControllerTest {
                         .value("Documento actualizado"));
     }
 
-    // ==========================================================
     // DELETE
-    // ==========================================================
-
     @Test
     @DisplayName("🔴 DELETE: Debería eliminar documento")
     void deberiaEliminarDocumento() throws Exception {
@@ -107,7 +95,7 @@ class DocumentoControllerTest {
                         delete("/documento/eliminar/1")
                 )
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.mensaje")
-                        .value("Documento eliminado correctamente"));
+                .andExpect(jsonPath("$.idEliminado")
+                        .value(1));
     }
 }

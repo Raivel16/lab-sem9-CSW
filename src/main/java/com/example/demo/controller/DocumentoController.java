@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/documento")
@@ -34,8 +35,19 @@ public class DocumentoController {
 
     // Eliminar
     @DeleteMapping("/eliminar/{id}")
-    public String eliminar(@PathVariable Long id) {
-        service.eliminarDocumento(id);
-        return "Documento eliminado correctamente";
+    public Map<String, Long> eliminar(@PathVariable Long id) {
+
+        Long idEliminado = service.eliminarDocumento(id);
+
+        if(idEliminado == null){
+            return Map.of(
+                    "idEliminado", -1L
+            );
+        }
+
+        return Map.of(
+                "idEliminado", idEliminado
+        );
+
     }
 }
